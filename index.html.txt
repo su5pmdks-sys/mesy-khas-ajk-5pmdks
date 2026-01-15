@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Mesyuarat Khas AJK MADT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 30px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 520px;
+      margin: auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 { margin-top: 0; }
+    .info p { margin: 6px 0; }
+    .count {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>📌 Countdown Program AJK</h2>
+
+  <div class="info">
+    <p><strong>Program:</strong> MESYUARAT KHAS AJK MADT</p>
+    <p><strong>Tarikh:</strong> 4 Mac 2026</p>
+    <p><strong>Masa:</strong> 5:00 Petang</p>
+    <p><strong>Lokasi:</strong> De Palma Resort Kuala Selangor</p>
+  </div>
+
+  <p class="count" id="countdown"></p>
+
+  <p style="font-size:12px;color:#666">
+    Dikemaskini secara automatik
+  </p>
+</div>
+
+<script>
+  // Tarikh & masa mesyuarat: 4 Mac 2026, 5:00 petang
+  const targetDate = new Date("2026-03-04T17:00:00");
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
+
+    let text = "";
+
+    if (diff > 0) {
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+      text = `⏳ Tinggal ${days} hari ${hours} jam ${minutes} minit lagi`;
+    } else if (diff > -3600000) {
+      text = "📅 Mesyuarat sedang berlangsung";
+    } else {
+      text = "✅ Mesyuarat telah selesai";
+    }
+
+    document.getElementById("countdown").innerText = text;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 60000); // kemas kini setiap minit
+</script>
+
+</body>
+</html>
